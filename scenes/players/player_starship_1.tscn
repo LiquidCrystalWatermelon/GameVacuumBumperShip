@@ -1,0 +1,64 @@
+[gd_scene load_steps=10 format=3 uid="uid://kedjuxxpnr8l"]
+
+[ext_resource type="PhysicsMaterial" uid="uid://dnbwyocte0s36" path="res://materials/planet_material.tres" id="1_l2v8r"]
+[ext_resource type="Texture2D" uid="uid://nplsaxppsaud" path="res://assets/images/SimplePixelSpaceships.png" id="1_wiyt6"]
+[ext_resource type="Script" uid="uid://ccfakfva0hsjg" path="res://scripts/player_starship_1.gd" id="2_5gfy8"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l2v8r"]
+atlas = ExtResource("1_wiyt6")
+region = Rect2(96, 192, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5gfy8"]
+atlas = ExtResource("1_wiyt6")
+region = Rect2(96, 208, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3nqql"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l2v8r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5gfy8")
+}],
+"loop": true,
+"name": &"default",
+"speed": 2.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qp2el"]
+radius = 8.06226
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0bb0n"]
+size = Vector2(24, 9)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vwyq0"]
+size = Vector2(6, 8)
+
+[node name="PlayerStarship1" type="RigidBody2D"]
+collision_layer = 2
+collision_mask = 3
+physics_material_override = ExtResource("1_l2v8r")
+gravity_scale = 0.0
+contact_monitor = true
+max_contacts_reported = 5
+script = ExtResource("2_5gfy8")
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_3nqql")
+autoplay = "default"
+frame_progress = 0.139581
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_qp2el")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(0, 7)
+shape = SubResource("RectangleShape2D_0bb0n")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="."]
+position = Vector2(0, -10)
+shape = SubResource("RectangleShape2D_vwyq0")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

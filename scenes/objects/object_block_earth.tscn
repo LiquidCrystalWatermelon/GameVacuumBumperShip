@@ -11,6 +11,7 @@ region = Rect2(66, 2, 28, 28)
 radius = 14.0357
 
 [node name="ObjectBlockEarth" type="RigidBody2D"]
+collision_mask = 3
 physics_material_override = ExtResource("1_ygovl")
 gravity_scale = 0.0
 
