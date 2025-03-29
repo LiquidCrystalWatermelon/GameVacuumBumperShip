@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://bnq3sfc6lcw3s"]
+
+[ext_resource type="Script" uid="uid://b73avm2icmtwn" path="res://scripts/physics_body.gd" id="1_udcn4"]
+
+[node name="PhysicsBody" type="RigidBody2D"]
+collision_mask = 3
+gravity_scale = 0.0
+script = ExtResource("1_udcn4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]

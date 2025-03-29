@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://bfevpb7ajq77s"]
+
+[ext_resource type="Script" uid="uid://c26w2tbbl8nq3" path="res://scripts/test/test_physics_collision.gd" id="1_p50fb"]
+
+[node name="TestPhysicsCollision" type="Node2D"]
+script = ExtResource("1_p50fb")
+
+[node name="SpawnCenter" type="Node2D" parent="."]
+position = Vector2(560, 316)

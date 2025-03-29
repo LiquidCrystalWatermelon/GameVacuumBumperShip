@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://bri0mv68oph73"]
+
+[ext_resource type="Texture2D" uid="uid://bgcmqgwxx8ar6" path="res://assets/aseprite/planet.aseprite" id="1_vo2fw"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ygovl"]
+atlas = ExtResource("1_vo2fw")
+region = Rect2(33, 49, 62, 14)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5gjo6"]
+size = Vector2(62, 14)
+
+[node name="ObjectBlockEarth" type="RigidBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("AtlasTexture_ygovl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_5gjo6")

@@ -1,0 +1,3 @@
+[gd_scene format=3 uid="uid://376v0bje4sl6"]
+
+[node name="TestPlanetCollision" type="Node2D"]
