@@ -1,3 +1,55 @@
-[gd_scene format=3 uid="uid://376v0bje4sl6"]
+[gd_scene load_steps=7 format=3 uid="uid://376v0bje4sl6"]
+
+[ext_resource type="PackedScene" uid="uid://cx57ux61lk2de" path="res://scenes/objects/object_block_earth.tscn" id="1_21sgk"]
+[ext_resource type="PackedScene" uid="uid://shsiytf76fkf" path="res://scenes/objects/object_block_rect_1.tscn" id="2_5wxsc"]
+[ext_resource type="PackedScene" uid="uid://bri0mv68oph73" path="res://scenes/objects/object_block_rect_2.tscn" id="3_vym24"]
+[ext_resource type="PackedScene" uid="uid://b5k2ctve6lyet" path="res://scenes/objects/object_block_rings_1.tscn" id="4_h2od8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m7jgd"]
+size = Vector2(1300, 135)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ws1bl"]
+size = Vector2(92, 918)
 
 [node name="TestPlanetCollision" type="Node2D"]
+
+[node name="Walls" type="Node2D" parent="."]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Walls"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/StaticBody2D"]
+position = Vector2(557, -68.5)
+shape = SubResource("RectangleShape2D_m7jgd")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="Walls"]
+position = Vector2(0, 782)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/StaticBody2D2"]
+position = Vector2(557, -394)
+shape = SubResource("RectangleShape2D_m7jgd")
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="Walls"]
+position = Vector2(0, 782)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/StaticBody2D3"]
+position = Vector2(-47, -460)
+shape = SubResource("RectangleShape2D_ws1bl")
+
+[node name="StaticBody2D4" type="StaticBody2D" parent="Walls"]
+position = Vector2(1248, 782)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/StaticBody2D4"]
+position = Vector2(-629, -460)
+shape = SubResource("RectangleShape2D_ws1bl")
+
+[node name="ObjectBlockEarth" parent="Walls" instance=ExtResource("1_21sgk")]
+position = Vector2(126.75, 64.5)
+
+[node name="ObjectBlockEarth2" parent="Walls" instance=ExtResource("2_5wxsc")]
+position = Vector2(137.75, 71.5)
+
+[node name="ObjectBlockEarth3" parent="Walls" instance=ExtResource("3_vym24")]
+position = Vector2(99.75, 75.5)
+
+[node name="ObjectBlockRings1" parent="Walls" instance=ExtResource("4_h2od8")]
+position = Vector2(111, 68)

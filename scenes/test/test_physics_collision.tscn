@@ -1,9 +1,25 @@
-[gd_scene load_steps=2 format=3 uid="uid://bfevpb7ajq77s"]
+[gd_scene load_steps=6 format=3 uid="uid://bfevpb7ajq77s"]
 
 [ext_resource type="Script" uid="uid://c26w2tbbl8nq3" path="res://scripts/test/test_physics_collision.gd" id="1_p50fb"]
+[ext_resource type="PackedScene" uid="uid://cx57ux61lk2de" path="res://scenes/objects/object_block_earth.tscn" id="2_ybk6o"]
+[ext_resource type="PackedScene" uid="uid://shsiytf76fkf" path="res://scenes/objects/object_block_rect_1.tscn" id="3_8n5p0"]
+[ext_resource type="PackedScene" uid="uid://bri0mv68oph73" path="res://scenes/objects/object_block_rect_2.tscn" id="4_84q87"]
+[ext_resource type="PackedScene" uid="uid://b5k2ctve6lyet" path="res://scenes/objects/object_block_rings_1.tscn" id="5_7vdjd"]
 
 [node name="TestPhysicsCollision" type="Node2D"]
 script = ExtResource("1_p50fb")
 
 [node name="SpawnCenter" type="Node2D" parent="."]
-position = Vector2(560, 316)
+position = Vector2(279, 171)
+
+[node name="ObjectBlockEarth" parent="." instance=ExtResource("2_ybk6o")]
+position = Vector2(119, 87)
+
+[node name="ObjectBlockEarth2" parent="." instance=ExtResource("3_8n5p0")]
+position = Vector2(219, 219)
+
+[node name="ObjectBlockEarth3" parent="." instance=ExtResource("4_84q87")]
+position = Vector2(329, 94)
+
+[node name="ObjectBlockRings1" parent="." instance=ExtResource("5_7vdjd")]
+position = Vector2(380, 209)

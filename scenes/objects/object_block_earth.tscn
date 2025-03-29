@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://cx57ux61lk2de"]
+[gd_scene load_steps=5 format=3 uid="uid://cx57ux61lk2de"]
 
 [ext_resource type="Texture2D" uid="uid://bgcmqgwxx8ar6" path="res://assets/aseprite/planet.aseprite" id="1_mjua8"]
+[ext_resource type="PhysicsMaterial" uid="uid://dnbwyocte0s36" path="res://materials/planet_material.tres" id="1_ygovl"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ygovl"]
 atlas = ExtResource("1_mjua8")
@@ -10,6 +11,8 @@ region = Rect2(66, 2, 28, 28)
 radius = 14.0357
 
 [node name="ObjectBlockEarth" type="RigidBody2D"]
+physics_material_override = ExtResource("1_ygovl")
+gravity_scale = 0.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = SubResource("AtlasTexture_ygovl")
