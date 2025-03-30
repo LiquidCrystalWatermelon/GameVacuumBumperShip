@@ -3,10 +3,10 @@
 [ext_resource type="PackedScene" uid="uid://cx57ux61lk2de" path="res://scenes/objects/object_block_earth.tscn" id="1_21sgk"]
 [ext_resource type="PackedScene" uid="uid://cavsaa4d6o6ma" path="res://scenes/background.tscn" id="1_vym24"]
 [ext_resource type="PackedScene" uid="uid://shsiytf76fkf" path="res://scenes/objects/object_block_rect_1.tscn" id="2_5wxsc"]
+[ext_resource type="PackedScene" uid="uid://84ig6lnl6f1u" path="res://scenes/wall_generator.tscn" id="2_tdjpo"]
 [ext_resource type="PackedScene" uid="uid://bri0mv68oph73" path="res://scenes/objects/object_block_rect_2.tscn" id="3_vym24"]
 [ext_resource type="PackedScene" uid="uid://b5k2ctve6lyet" path="res://scenes/objects/object_block_rings_1.tscn" id="4_h2od8"]
 [ext_resource type="PackedScene" uid="uid://kedjuxxpnr8l" path="res://scenes/players/player_starship_1.tscn" id="5_5wxsc"]
-[ext_resource type="Script" uid="uid://blju8wk1nkd1a" path="res://scripts/wall_generator.gd" id="6_tdjpo"]
 [ext_resource type="Texture2D" uid="uid://nplsaxppsaud" path="res://assets/images/SimplePixelSpaceships.png" id="7_h2od8"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tdjpo"]
@@ -38,8 +38,7 @@ modulate = Color(0.214103, 0.214103, 0.214103, 1)
 position = Vector2(264, 136)
 scale = Vector2(4.5, 4.5)
 
-[node name="Walls1" type="Node2D" parent="."]
-script = ExtResource("6_tdjpo")
+[node name="WallGenerator" parent="." instance=ExtResource("2_tdjpo")]
 
 [node name="Planets" type="Node2D" parent="."]
 
@@ -70,6 +69,8 @@ score_id = 1
 
 [node name="Sprite2D" parent="ShipB1" index="0"]
 sprite_frames = SubResource("SpriteFrames_w7x4m")
+animation = &"default"
+frame = 0
 frame_progress = 0.0
 
 [node name="ShipB2" parent="." instance=ExtResource("5_5wxsc")]
@@ -80,6 +81,8 @@ score_id = 1
 
 [node name="Sprite2D" parent="ShipB2" index="0"]
 sprite_frames = SubResource("SpriteFrames_w7x4m")
+animation = &"default"
+frame = 0
 frame_progress = 0.0
 
 [editable path="ShipB1"]

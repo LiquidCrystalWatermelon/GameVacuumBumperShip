@@ -1,8 +1,12 @@
 class_name PlayerStarShip1
 extends RigidBody2D
 
+signal on_crashed
+signal on_collected
+
 # 可调节参数
 @export var score_id := 0
+@export var enable_wall_crash := true
 @export var engine_thrust := 400.0       # 主引擎推力（牛顿）
 @export var reverse_thrust := 200.0     # 反向引擎推力
 @export var rotation_torque := 600.0    # 旋转扭矩（牛米）
@@ -12,7 +16,14 @@ extends RigidBody2D
 var thrust_input := 0.0
 var rotation_input := 0.0
 
+var is_active = true
+
+@onready var sprite: AnimatedSprite2D = $Sprite2D
+
 func _physics_process(delta: float) -> void:
+    if not is_active:
+        return
+        
     process_input()
     apply_forces(delta)
     apply_speed_limits()
@@ -54,7 +65,45 @@ func apply_speed_limits():
 
 
 func _on_body_entered(body: Node) -> void:
+    if not is_active:
+        return
+        
     print("碰撞开始")
     if body is PlayerStarShip1 and score_id == body.score_id:
         print("飞船碰撞！")
+        disable_rigid()
+        emit_signal("on_collected")
+        sprite.play("complete")
+        await sprite.animation_finished
         queue_free()
+    elif enable_wall_crash and is_in_collision_layer(body, 3):
+        print("碰撞墙体！")
+        disable_rigid()
+        emit_signal("on_crashed")
+        sprite.play("die")
+        await sprite.animation_finished
+        queue_free()
+
+func disable_rigid():
+    is_active = false
+    linear_velocity = Vector2(0,0)
+    collision_mask = 0
+    collision_layer = 0
+    contact_monitor = false
+    
+
+# 判断节点是否在指定碰撞层（层号从1开始）
+func is_in_collision_layer(node: Node, layer_number: int) -> bool:
+    # 验证节点类型
+    if not (node is PhysicsBody2D or node is Area2D):
+        push_warning("非物理体节点: %s" % node.name)
+        return false
+    
+    # 验证层号有效性
+    if layer_number < 1 or layer_number > 32:
+        push_error("无效的层号: %d (有效范围1-32)" % layer_number)
+        return false
+    
+    # 位掩码计算（层号转二进制位）
+    var bit_mask = 1 << (layer_number - 1)
+    return (node.collision_layer & bit_mask) != 0

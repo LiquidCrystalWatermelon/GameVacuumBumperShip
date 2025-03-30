@@ -1,0 +1,31 @@
+[gd_scene load_steps=3 format=3 uid="uid://dy27c3hhp0ycp"]
+
+[ext_resource type="Script" uid="uid://p0btfp6k3q7o" path="res://scripts/base_level.gd" id="1_qwvou"]
+[ext_resource type="PackedScene" uid="uid://84ig6lnl6f1u" path="res://scenes/wall_generator.tscn" id="2_u436r"]
+
+[node name="BaseLevel" type="Node2D"]
+script = ExtResource("1_qwvou")
+
+[node name="WallGenerator" parent="." instance=ExtResource("2_u436r")]
+
+[node name="Planets" type="Node2D" parent="."]
+
+[node name="Starships" type="Node2D" parent="."]
+
+[node name="UI" type="FlowContainer" parent="."]
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 94.0
+offset_bottom = 96.0
+
+[node name="LabelLevel" type="Label" parent="UI"]
+layout_mode = 2
+text = "第0关"
+
+[node name="LabelCollection" type="Label" parent="UI"]
+layout_mode = 2
+text = "已收集 0/0"
+
+[node name="LabelTimer" type="Label" parent="UI"]
+layout_mode = 2
+text = "用时 00:00"
