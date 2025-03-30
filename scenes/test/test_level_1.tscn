@@ -279,7 +279,7 @@ offset_left = -14.0
 offset_top = -12.0
 offset_right = 504.0
 offset_bottom = 294.0
-color = Color(0.0703, 0.215155, 0.37, 1)
+color = Color(0, 0.18, 0.36, 1)
 
 [node name="BaseLevel" parent="." instance=ExtResource("1_djm5j")]
 level_id = 1
