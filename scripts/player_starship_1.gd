@@ -22,11 +22,13 @@ var is_active = true
 
 func _physics_process(delta: float) -> void:
     if not is_active:
+        $JetAudioPlayer.stop_engine()
         return
         
     process_input()
     apply_forces(delta)
     apply_speed_limits()
+    jet_audio_play()
 
 func process_input():
     # 获取输入值（支持模拟输入）
@@ -54,6 +56,15 @@ func apply_speed_limits():
     # 速度限制（防止无限加速）
     if linear_velocity.length() > max_speed:
         linear_velocity = linear_velocity.normalized() * max_speed
+
+
+func jet_audio_play():
+    if not is_active:
+        $JetAudioPlayer.stop_engine()
+    elif thrust_input != 0 or rotation_input != 0:
+        $JetAudioPlayer.play_engine()
+    else:
+        $JetAudioPlayer.stop_engine()
 
 # 可选：添加粒子效果控制
 #func _process(delta):

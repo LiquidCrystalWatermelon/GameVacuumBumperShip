@@ -67,6 +67,8 @@ score_id = 1
 
 [node name="Sprite2D" parent="ShipB1" index="0"]
 sprite_frames = SubResource("SpriteFrames_w7x4m")
+animation = &"default"
+autoplay = ""
 
 [node name="ShipB2" parent="." instance=ExtResource("5_5wxsc")]
 position = Vector2(392, 56)
@@ -76,6 +78,8 @@ score_id = 1
 
 [node name="Sprite2D" parent="ShipB2" index="0"]
 sprite_frames = SubResource("SpriteFrames_w7x4m")
+animation = &"default"
+autoplay = ""
 
 [editable path="ShipB1"]
 [editable path="ShipB2"]
