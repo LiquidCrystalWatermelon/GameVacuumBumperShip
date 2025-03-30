@@ -80,20 +80,28 @@ func _on_body_entered(body: Node) -> void:
         return
         
     print("碰撞开始")
-    if body is PlayerStarShip1 and score_id == body.score_id:
+    if body is PlayerStarShip1:
         print("飞船碰撞！")
-        disable_rigid()
-        emit_signal("on_collected")
-        sprite.play("complete")
-        await sprite.animation_finished
-        queue_free()
-    elif enable_wall_crash and is_in_collision_layer(body, 3):
+        if score_id == body.score_id:
+            disable_rigid()
+            AudioManager.play_sound(AudioManager.SoundType.SCORE, global_position)
+            emit_signal("on_collected")
+            sprite.play("complete")
+            await sprite.animation_finished
+            queue_free()
+        else:
+            AudioManager.play_sound(AudioManager.SoundType.COLLISION, global_position)
+    elif is_in_collision_layer(body, 3):
         print("碰撞墙体！")
-        disable_rigid()
-        emit_signal("on_crashed")
-        sprite.play("die")
-        await sprite.animation_finished
-        queue_free()
+        if enable_wall_crash:
+            disable_rigid()
+            AudioManager.play_sound(AudioManager.SoundType.EXPLOSION, global_position)
+            emit_signal("on_crashed")
+            sprite.play("die")
+            await sprite.animation_finished
+            queue_free()
+        else:
+            AudioManager.play_sound(AudioManager.SoundType.COLLISION, global_position)
 
 func disable_rigid():
     is_active = false
