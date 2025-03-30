@@ -29,3 +29,7 @@ text = "已收集 0/0"
 [node name="LabelTimer" type="Label" parent="UI"]
 layout_mode = 2
 text = "用时 00:00"
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
