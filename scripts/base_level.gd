@@ -14,6 +14,21 @@ var current_time_s := 0
 func _ready():
     $Timer.start(1)
     update_ui_info()
+    regist_ship_collect()
+    
+func regist_ship_collect():
+    for ship: PlayerStarShip1 in $Planets.get_children():
+        ship.on_crashed.connect(on_ship_crashed)
+        ship.on_collected.connect(on_ship_collect)
+        
+func on_ship_crashed():
+    # TODO 重新开始游戏
+    pass
+
+func on_ship_collect():
+    collection_current += 1;
+    update_ui_info()
+    pass
 
 func update_ui_info():
     $UI/LabelLevel.text = "第{0}关".format([level_id])
