@@ -1,11 +1,19 @@
-[gd_scene load_steps=5 format=3 uid="uid://davum8we7twji"]
+[gd_scene load_steps=8 format=3 uid="uid://davum8we7twji"]
 
 [ext_resource type="PackedScene" uid="uid://dy27c3hhp0ycp" path="res://scenes/base_level.tscn" id="1_djm5j"]
-[ext_resource type="PackedScene" uid="uid://cx57ux61lk2de" path="res://scenes/objects/object_block_earth.tscn" id="2_g7lxi"]
+[ext_resource type="PackedScene" uid="uid://chy1ypaqyiwg" path="res://scenes/objects/object_block_base.tscn" id="2_fm3no"]
 [ext_resource type="PackedScene" uid="uid://kedjuxxpnr8l" path="res://scenes/players/player_starship_1.tscn" id="2_kld5w"]
+[ext_resource type="Texture2D" uid="uid://bgcmqgwxx8ar6" path="res://assets/aseprite/planet.aseprite" id="3_omkcf"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_g7lxi"]
-radius = 71.1969
+[sub_resource type="AtlasTexture" id="AtlasTexture_ahtlo"]
+atlas = ExtResource("3_omkcf")
+region = Rect2(0, 2, 15, 13)
+
+[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_ahtlo"]
+points = PackedVector2Array(0, -27, -30, 23, 30, 23)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_omkcf"]
+radius = 70.7107
 
 [node name="Node" type="Node2D"]
 
@@ -20,14 +28,24 @@ color = Color(0, 0.18, 0.36, 1)
 level_id = 1
 collection_target = 4
 
-[node name="ObjectBlockEarth" parent="BaseLevel/Planets" index="0" instance=ExtResource("2_g7lxi")]
-position = Vector2(351, 174)
+[node name="ObjectBlockBase2" parent="BaseLevel/Planets" index="0" instance=ExtResource("2_fm3no")]
+position = Vector2(221, 117)
 
-[node name="Sprite2D" parent="BaseLevel/Planets/ObjectBlockEarth" index="0"]
+[node name="Sprite2D" parent="BaseLevel/Planets/ObjectBlockBase2" index="0"]
+scale = Vector2(4, 4)
+texture = SubResource("AtlasTexture_ahtlo")
+
+[node name="CollisionShape2D" parent="BaseLevel/Planets/ObjectBlockBase2" index="1"]
+shape = SubResource("ConvexPolygonShape2D_ahtlo")
+
+[node name="ObjectBlockBase" parent="BaseLevel/Planets" index="1" instance=ExtResource("2_fm3no")]
+position = Vector2(352, 175)
+
+[node name="Sprite2D" parent="BaseLevel/Planets/ObjectBlockBase" index="0"]
 scale = Vector2(5, 5)
 
-[node name="CollisionShape2D" parent="BaseLevel/Planets/ObjectBlockEarth" index="1"]
-shape = SubResource("CircleShape2D_g7lxi")
+[node name="CollisionShape2D" parent="BaseLevel/Planets/ObjectBlockBase" index="1"]
+shape = SubResource("CircleShape2D_omkcf")
 
 [node name="Ship A 1" parent="BaseLevel/Starships" index="0" instance=ExtResource("2_kld5w")]
 position = Vector2(139, 238)
@@ -55,6 +73,7 @@ animation = &"default_1"
 autoplay = "default_1"
 
 [editable path="BaseLevel"]
-[editable path="BaseLevel/Planets/ObjectBlockEarth"]
+[editable path="BaseLevel/Planets/ObjectBlockBase2"]
+[editable path="BaseLevel/Planets/ObjectBlockBase"]
 [editable path="BaseLevel/Starships/Ship B 1"]
 [editable path="BaseLevel/Starships/Ship B 2"]

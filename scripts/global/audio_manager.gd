@@ -53,6 +53,8 @@ var CONFIG := {
 var _engine_player: AudioStreamPlayer2D
 var _active_players := []
 
+var can_play_sound := false
+
 func _ready():
     # 预创建实例池
     for type in CONFIG.keys():
@@ -64,17 +66,23 @@ func _ready():
 func _process(delta):
     # 引擎声处理
     #_handle_engine(delta)
-    
+    can_play_sound = true
     # 清理完成实例
     _cleanup_players()
 
 func play_sound(type: SoundType, position: Vector2 = Vector2.ZERO):
+    if not can_play_sound:
+        return
+    can_play_sound = false
     #if type == SoundType.ENGINE_LOOP:
         #_engine_params.is_active = true
         #return
     
-    var pool = CONFIG[type].players
-    var player = pool.filter(func(p): return not p.playing).front()
+    var pool: Array = CONFIG[type].players
+    var players := pool.filter(func(p): return not p.playing)
+    var player = null;
+    if pool.size() > 0:
+        player = players.front()
     
     if player:
         _setup_player(player, type, position)

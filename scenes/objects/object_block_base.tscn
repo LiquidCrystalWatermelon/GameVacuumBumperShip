@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://chy1ypaqyiwg"]
+
+[ext_resource type="PhysicsMaterial" uid="uid://dnbwyocte0s36" path="res://materials/planet_material.tres" id="1_o4dx7"]
+[ext_resource type="Texture2D" uid="uid://bgcmqgwxx8ar6" path="res://assets/aseprite/planet.aseprite" id="2_ujurx"]
+[ext_resource type="Script" uid="uid://dn264m13wd0r2" path="res://scripts/object_block_base.gd" id="2_yfyuu"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ygovl"]
+atlas = ExtResource("2_ujurx")
+region = Rect2(66, 2, 28, 28)
+
+[node name="ObjectBlockBase" type="RigidBody2D"]
+collision_mask = 3
+physics_material_override = ExtResource("1_o4dx7")
+gravity_scale = 0.0
+contact_monitor = true
+max_contacts_reported = 5
+script = ExtResource("2_yfyuu")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("AtlasTexture_ygovl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+
+[connection signal="body_shape_entered" from="." to="." method="_on_body_shape_entered"]

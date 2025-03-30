@@ -109,7 +109,7 @@ func disable_rigid():
     linear_velocity = Vector2(0,0)
     collision_mask = 0
     collision_layer = 0
-    contact_monitor = false
+    set_contact_monitor(false)
     
 
 # 判断节点是否在指定碰撞层（层号从1开始）

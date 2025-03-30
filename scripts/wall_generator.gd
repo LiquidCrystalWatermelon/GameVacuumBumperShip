@@ -31,7 +31,7 @@ func _create_boundaries():
     }
     
     for name in boundaries:
-        var static_body = StaticBody2D.new()
+        var static_body := StaticBody2D.new()
         var collision = CollisionShape2D.new()
         var shape = WorldBoundaryShape2D.new()
         
@@ -42,7 +42,7 @@ func _create_boundaries():
         
         # 配置碰撞层（二进制位掩码）
         static_body.collision_layer = 0b101  # 对应第1层(2^0)和第3层(2^2)
-        
+    
         static_body.add_child(collision)
         add_child(static_body)
         
