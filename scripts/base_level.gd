@@ -62,8 +62,8 @@ func exit_anim():
 
 func animate_sprite_exit(sprite: Node2D, index: int) -> float:
     var animation_duration := 0.5    # 动画总时长
-    var start_delay := 0.2          # 起始延迟
-    var per_item_delay := 0.15      # 每个物体间的间隔延迟
+    var start_delay := 0.4         # 起始延迟
+    var per_item_delay := 0.05      # 每个物体间的间隔延迟
     var ease_type := Tween.EASE_OUT  # 缓动类型
 
     var tween = create_tween().set_parallel(true)  # 并行动画
