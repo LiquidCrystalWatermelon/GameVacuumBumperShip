@@ -41,7 +41,7 @@ position = Vector2(50, 163)
 rotation = 1.5708
 score_id = 1
 
-[node name="Sprite2D" parent="BaseLevel/Starships/Ship B 1" index="0"]
+[node name="Sprite2D" parent="BaseLevel/Starships/Ship B 1" index="1"]
 animation = &"default_1"
 autoplay = "default_1"
 
@@ -50,7 +50,7 @@ position = Vector2(433, 55)
 rotation = 4.71239
 score_id = 1
 
-[node name="Sprite2D" parent="BaseLevel/Starships/Ship B 2" index="0"]
+[node name="Sprite2D" parent="BaseLevel/Starships/Ship B 2" index="1"]
 animation = &"default_1"
 autoplay = "default_1"
 

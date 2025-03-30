@@ -29,6 +29,7 @@ func _physics_process(delta: float) -> void:
     apply_forces(delta)
     apply_speed_limits()
     jet_audio_play()
+    jet_particle_genarate()
 
 func process_input():
     # 获取输入值（支持模拟输入）
@@ -66,14 +67,14 @@ func jet_audio_play():
     else:
         $JetAudioPlayer.stop_engine()
 
-# 可选：添加粒子效果控制
-#func _process(delta):
-    ## 控制引擎粒子效果
-    #$ExhaustParticles.emitting = thrust_input > 0
-    #$ReverseParticles.emitting = thrust_input < 0
-    #$LeftThruster.emitting = rotation_input > 0
-    #$RightThruster.emitting = rotation_input < 0
-
+func jet_particle_genarate():
+    if not is_active:
+        $JetPartical.emitting = false
+    elif thrust_input != 0 or rotation_input != 0:
+        $JetPartical.emitting = true
+    else:
+        $JetPartical.emitting = false
+        
 
 func _on_body_entered(body: Node) -> void:
     if not is_active:

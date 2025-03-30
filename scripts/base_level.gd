@@ -95,7 +95,9 @@ func on_ship_collect():
     if collection_current >= collection_target:
         # 进入下一关
         on_game_success.emit()
-        pass
+        await exit_anim()
+        AudioManager.play_sound(AudioManager.SoundType.LEVEL_CLEAR, get_viewport_rect().size / 2)
+        queue_free()
 
 ## 更新 ui
 func update_ui_info():

@@ -65,7 +65,7 @@ position = Vector2(88, 184)
 rotation = 0.601741
 score_id = 1
 
-[node name="Sprite2D" parent="ShipB1" index="0"]
+[node name="Sprite2D" parent="ShipB1" index="1"]
 sprite_frames = SubResource("SpriteFrames_w7x4m")
 animation = &"default"
 autoplay = ""
@@ -76,7 +76,7 @@ rotation = 2.88804
 mass = 3.0
 score_id = 1
 
-[node name="Sprite2D" parent="ShipB2" index="0"]
+[node name="Sprite2D" parent="ShipB2" index="1"]
 sprite_frames = SubResource("SpriteFrames_w7x4m")
 animation = &"default"
 autoplay = ""

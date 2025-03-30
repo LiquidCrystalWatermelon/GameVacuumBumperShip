@@ -421,6 +421,24 @@ contact_monitor = true
 max_contacts_reported = 5
 script = ExtResource("2_5gfy8")
 
+[node name="JetPartical" type="CPUParticles2D" parent="."]
+emitting = false
+lifetime = 0.87
+explosiveness = 0.29
+randomness = 0.24
+lifetime_randomness = 0.19
+emission_shape = 3
+emission_rect_extents = Vector2(1, 1)
+spread = 141.51
+gravity = Vector2(0, 0)
+initial_velocity_min = 8.51
+initial_velocity_max = 25.53
+angle_min = -15.0
+angle_max = 15.0
+scale_amount_min = 4.0
+scale_amount_max = 16.0
+color = Color(1, 1, 1, 0.462745)
+
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_3nqql")
