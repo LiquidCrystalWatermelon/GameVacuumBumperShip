@@ -34,9 +34,7 @@ animations = [{
 [node name="TestPlanetCollision" type="Node2D"]
 
 [node name="Background" parent="." instance=ExtResource("1_vym24")]
-modulate = Color(0.214103, 0.214103, 0.214103, 1)
 position = Vector2(264, 136)
-scale = Vector2(4.5, 4.5)
 
 [node name="WallGenerator" parent="." instance=ExtResource("2_tdjpo")]
 
@@ -69,9 +67,6 @@ score_id = 1
 
 [node name="Sprite2D" parent="ShipB1" index="0"]
 sprite_frames = SubResource("SpriteFrames_w7x4m")
-animation = &"default"
-frame = 0
-frame_progress = 0.0
 
 [node name="ShipB2" parent="." instance=ExtResource("5_5wxsc")]
 position = Vector2(392, 56)
@@ -81,9 +76,6 @@ score_id = 1
 
 [node name="Sprite2D" parent="ShipB2" index="0"]
 sprite_frames = SubResource("SpriteFrames_w7x4m")
-animation = &"default"
-frame = 0
-frame_progress = 0.0
 
 [editable path="ShipB1"]
 [editable path="ShipB2"]

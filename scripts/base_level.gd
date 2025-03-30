@@ -1,5 +1,8 @@
 extends Node2D
 
+signal on_game_failed
+signal on_game_success
+
 ## 当前关数
 @export var level_id := 0
 ## 目标收集进度
@@ -15,21 +18,27 @@ func _ready():
     $Timer.start(1)
     update_ui_info()
     regist_ship_collect()
-    
+
+## 注册所有飞船的事件监听
 func regist_ship_collect():
-    for ship: PlayerStarShip1 in $Planets.get_children():
+    for ship: PlayerStarShip1 in $Starships.get_children():
         ship.on_crashed.connect(on_ship_crashed)
         ship.on_collected.connect(on_ship_collect)
-        
+
 func on_ship_crashed():
-    # TODO 重新开始游戏
+    # 游戏失败
+    on_game_failed.emit()
     pass
 
 func on_ship_collect():
     collection_current += 1;
     update_ui_info()
-    pass
+    if collection_current >= collection_target:
+        # 进入下一关
+        on_game_success.emit()
+        pass
 
+## 更新 ui
 func update_ui_info():
     $UI/LabelLevel.text = "第{0}关".format([level_id])
     $UI/LabelCollection.text = "已收集 {0}/{1}".format([collection_current, collection_target])

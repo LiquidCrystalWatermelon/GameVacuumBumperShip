@@ -1,14 +1,14 @@
 [gd_scene load_steps=5 format=3 uid="uid://cavsaa4d6o6ma"]
 
-[ext_resource type="Texture2D" uid="uid://ccfehyhcdqy8t" path="res://assets/images/space8_4-frames.png" id="1_bkp1e"]
+[ext_resource type="Texture2D" uid="uid://din48tk6q2lk" path="res://assets/images/space9_4-frames.png" id="1_bkp1e"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bkp1e"]
 atlas = ExtResource("1_bkp1e")
-region = Rect2(0, 0, 128, 64)
+region = Rect2(0, 0, 640, 320)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_y0upk"]
 atlas = ExtResource("1_bkp1e")
-region = Rect2(128, 0, 128, 64)
+region = Rect2(640, 0, 640, 320)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_wax1t"]
 animations = [{
@@ -27,4 +27,4 @@ animations = [{
 [node name="Background" type="AnimatedSprite2D"]
 sprite_frames = SubResource("SpriteFrames_wax1t")
 autoplay = "default"
-frame_progress = 0.893804
+frame_progress = 0.791603
