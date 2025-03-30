@@ -2,6 +2,7 @@ class_name PlayerStarShip1
 extends RigidBody2D
 
 # 可调节参数
+@export var score_id := 0
 @export var engine_thrust := 400.0       # 主引擎推力（牛顿）
 @export var reverse_thrust := 200.0     # 反向引擎推力
 @export var rotation_torque := 600.0    # 旋转扭矩（牛米）
@@ -54,6 +55,6 @@ func apply_speed_limits():
 
 func _on_body_entered(body: Node) -> void:
     print("碰撞开始")
-    if body is PlayerStarShip1:
+    if body is PlayerStarShip1 and score_id == body.score_id:
         print("飞船碰撞！")
         queue_free()
