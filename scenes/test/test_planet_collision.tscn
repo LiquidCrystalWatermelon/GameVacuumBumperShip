@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://376v0bje4sl6"]
+[gd_scene load_steps=12 format=3 uid="uid://376v0bje4sl6"]
 
 [ext_resource type="PackedScene" uid="uid://cx57ux61lk2de" path="res://scenes/objects/object_block_earth.tscn" id="1_21sgk"]
 [ext_resource type="PackedScene" uid="uid://cavsaa4d6o6ma" path="res://scenes/background.tscn" id="1_vym24"]
@@ -6,18 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://bri0mv68oph73" path="res://scenes/objects/object_block_rect_2.tscn" id="3_vym24"]
 [ext_resource type="PackedScene" uid="uid://b5k2ctve6lyet" path="res://scenes/objects/object_block_rings_1.tscn" id="4_h2od8"]
 [ext_resource type="PackedScene" uid="uid://kedjuxxpnr8l" path="res://scenes/players/player_starship_1.tscn" id="5_5wxsc"]
+[ext_resource type="Script" uid="uid://blju8wk1nkd1a" path="res://scripts/wall_generator.gd" id="6_tdjpo"]
 [ext_resource type="Texture2D" uid="uid://nplsaxppsaud" path="res://assets/images/SimplePixelSpaceships.png" id="7_h2od8"]
-
-[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_h2od8"]
-normal = Vector2(0, 1)
-
-[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_tdjpo"]
-
-[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_nert2"]
-normal = Vector2(1, 0)
-
-[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_w7x4m"]
-normal = Vector2(-1, 0)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tdjpo"]
 atlas = ExtResource("7_h2od8")
@@ -48,40 +38,21 @@ modulate = Color(0.214103, 0.214103, 0.214103, 1)
 position = Vector2(264, 136)
 scale = Vector2(4.5, 4.5)
 
-[node name="Walls" type="Node2D" parent="."]
+[node name="Walls1" type="Node2D" parent="."]
+script = ExtResource("6_tdjpo")
 
-[node name="StaticBody2D" type="StaticBody2D" parent="Walls"]
+[node name="Planets" type="Node2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/StaticBody2D"]
-shape = SubResource("WorldBoundaryShape2D_h2od8")
-
-[node name="StaticBody2D2" type="StaticBody2D" parent="Walls"]
-position = Vector2(480, 270)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/StaticBody2D2"]
-shape = SubResource("WorldBoundaryShape2D_tdjpo")
-
-[node name="StaticBody2D3" type="StaticBody2D" parent="Walls"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/StaticBody2D3"]
-shape = SubResource("WorldBoundaryShape2D_nert2")
-
-[node name="StaticBody2D4" type="StaticBody2D" parent="Walls"]
-position = Vector2(480, 270)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/StaticBody2D4"]
-shape = SubResource("WorldBoundaryShape2D_w7x4m")
-
-[node name="ObjectBlockEarth" parent="Walls" instance=ExtResource("1_21sgk")]
+[node name="ObjectBlockEarth" parent="Planets" instance=ExtResource("1_21sgk")]
 position = Vector2(227, 65)
 
-[node name="ObjectBlockEarth2" parent="Walls" instance=ExtResource("2_5wxsc")]
+[node name="ObjectBlockEarth2" parent="Planets" instance=ExtResource("2_5wxsc")]
 position = Vector2(174, 72)
 
-[node name="ObjectBlockEarth3" parent="Walls" instance=ExtResource("3_vym24")]
+[node name="ObjectBlockEarth3" parent="Planets" instance=ExtResource("3_vym24")]
 position = Vector2(253, 101)
 
-[node name="ObjectBlockRings1" parent="Walls" instance=ExtResource("4_h2od8")]
+[node name="ObjectBlockRings1" parent="Planets" instance=ExtResource("4_h2od8")]
 position = Vector2(111, 68)
 
 [node name="ShipA1" parent="." instance=ExtResource("5_5wxsc")]
