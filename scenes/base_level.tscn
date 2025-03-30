@@ -1,7 +1,20 @@
-[gd_scene load_steps=3 format=3 uid="uid://dy27c3hhp0ycp"]
+[gd_scene load_steps=7 format=3 uid="uid://dy27c3hhp0ycp"]
 
 [ext_resource type="Script" uid="uid://p0btfp6k3q7o" path="res://scripts/base_level.gd" id="1_dbkse"]
 [ext_resource type="PackedScene" uid="uid://84ig6lnl6f1u" path="res://scenes/wall_generator.tscn" id="2_0n1tn"]
+[ext_resource type="FontFile" uid="uid://qaopt8pw4o2s" path="res://assets/font/quaver.ttf" id="3_0n1tn"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_oox4p"]
+font = ExtResource("3_0n1tn")
+font_size = 8
+
+[sub_resource type="LabelSettings" id="LabelSettings_k2uud"]
+font = ExtResource("3_0n1tn")
+font_size = 8
+
+[sub_resource type="LabelSettings" id="LabelSettings_3aqo6"]
+font = ExtResource("3_0n1tn")
+font_size = 8
 
 [node name="BaseLevel" type="Node2D"]
 script = ExtResource("1_dbkse")
@@ -20,15 +33,18 @@ offset_bottom = 96.0
 
 [node name="LabelLevel" type="Label" parent="UI"]
 layout_mode = 2
-text = "第0关"
+text = "Level 0"
+label_settings = SubResource("LabelSettings_oox4p")
 
 [node name="LabelCollection" type="Label" parent="UI"]
 layout_mode = 2
-text = "已收集 0/0"
+text = "Collected 0/0"
+label_settings = SubResource("LabelSettings_k2uud")
 
 [node name="LabelTimer" type="Label" parent="UI"]
 layout_mode = 2
-text = "用时 00:00"
+text = "Time 00:00"
+label_settings = SubResource("LabelSettings_3aqo6")
 
 [node name="Timer" type="Timer" parent="."]
 

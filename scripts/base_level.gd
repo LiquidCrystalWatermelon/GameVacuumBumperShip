@@ -101,9 +101,9 @@ func on_ship_collect():
 
 ## 更新 ui
 func update_ui_info():
-    $UI/LabelLevel.text = "第{0}关".format([level_id])
-    $UI/LabelCollection.text = "已收集 {0}/{1}".format([collection_current, collection_target])
-    $UI/LabelTimer.text = "用时 %s" % format_time(current_time_s)
+    $UI/LabelLevel.text = "Level %d" % level_id
+    $UI/LabelCollection.text = "Collected %d/%d" % [collection_current, collection_target]
+    $UI/LabelTimer.text = "Time %s" % format_time(current_time_s)
 
 func format_time(seconds: int) -> String:
     var minutes = (seconds) / 60
