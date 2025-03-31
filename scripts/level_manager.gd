@@ -18,8 +18,15 @@ extends Node2D
 var current_level_index = 0
 
 func _ready() -> void:
+    await load_welcome()
     load_level(current_level_index, levels)
     
+func load_welcome():
+    var welcome_res = preload("res://scenes/welcome.tscn")
+    var welcome = welcome_res.instantiate()
+    add_child(welcome)
+    await get_tree().create_timer(2).timeout
+    welcome.queue_free()
 
 func load_level(level_index: int, level_list: Array):
     if level_list == null or level_list.is_empty():
