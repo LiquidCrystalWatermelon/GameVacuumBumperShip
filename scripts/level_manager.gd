@@ -11,6 +11,8 @@ extends Node2D
     preload("res://scenes/levels/level_070.tscn"),
     preload("res://scenes/levels/level_080.tscn"),
     preload("res://scenes/levels/level_090.tscn"),
+    preload("res://scenes/levels/level_100.tscn"),
+    preload("res://scenes/levels/level_910.tscn"),
 ]
 
 var current_level_index = 0
@@ -32,6 +34,9 @@ func load_level(level_index: int, level_list: Array):
     # 配置关卡属性
     var level_node_impl :BaseLevel = level_node.get_child(0)
     level_node_impl.level_id = level_index + 1
+    
+    if level_node_impl.level_id == 10:
+        level_node_impl.need_play_full_song = true
     
     # 连接关卡监听
     level_node_impl.on_game_failed.connect(_on_level_failed)

@@ -8,6 +8,8 @@ signal on_game_success
 @export var level_id := 0
 ## 目标收集进度
 @export var collection_target := 0
+## 是否播放全曲通关音乐
+@export var need_play_full_song := false
 
 ## 当前收集数
 var collection_current := 0
@@ -98,7 +100,8 @@ func on_ship_collect():
         await exit_anim()
         on_game_success.emit()
         queue_free()
-        AudioManager.play_sound(AudioManager.SoundType.LEVEL_CLEAR, get_viewport_rect().size / 2)
+        var song_type = AudioManager.SoundType.GAME_COMPLETE if need_play_full_song else AudioManager.SoundType.LEVEL_CLEAR
+        AudioManager.play_sound(song_type, get_viewport_rect().size / 2)
         
 func disable_all_collision():
     for rb in $Starships.get_children() + $Planets.get_children():

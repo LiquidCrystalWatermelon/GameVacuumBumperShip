@@ -1,0 +1,341 @@
+[gd_scene load_steps=21 format=3 uid="uid://2u3cw01g572v"]
+
+[ext_resource type="PackedScene" uid="uid://dy27c3hhp0ycp" path="res://scenes/base_level.tscn" id="1_nlf3d"]
+[ext_resource type="PackedScene" uid="uid://chy1ypaqyiwg" path="res://scenes/objects/object_block_base.tscn" id="2_nn5b2"]
+[ext_resource type="Texture2D" uid="uid://bgcmqgwxx8ar6" path="res://assets/aseprite/planet.aseprite" id="3_lt0ls"]
+[ext_resource type="PackedScene" uid="uid://kedjuxxpnr8l" path="res://scenes/players/player_starship_1.tscn" id="4_36y0r"]
+[ext_resource type="Texture2D" uid="uid://nplsaxppsaud" path="res://assets/images/SimplePixelSpaceships.png" id="4_nn5b2"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hhn40"]
+atlas = ExtResource("3_lt0ls")
+region = Rect2(1, 65, 30, 30)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_t51je"]
+radius = 44.2832
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ul5ow"]
+atlas = ExtResource("3_lt0ls")
+region = Rect2(32, 6, 32, 20)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_rx5vx"]
+radius = 30.0167
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_h1uwv"]
+height = 90.8959
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_itkms"]
+atlas = ExtResource("3_lt0ls")
+region = Rect2(1, 35, 30, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7x6b4"]
+atlas = ExtResource("3_lt0ls")
+region = Rect2(0, 2, 15, 13)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1hnra"]
+atlas = ExtResource("3_lt0ls")
+region = Rect2(33, 49, 62, 14)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yixln"]
+size = Vector2(62, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k1c4v"]
+atlas = ExtResource("3_lt0ls")
+region = Rect2(34, 33, 27, 14)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i8yg5"]
+size = Vector2(26.9099, 13.2612)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lt0ls"]
+atlas = ExtResource("4_nn5b2")
+region = Rect2(34, 242, 12, 11)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_36y0r"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nn5b2"]
+atlas = ExtResource("4_nn5b2")
+region = Rect2(50, 242, 13, 11)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_lt0ls"]
+radius = 6.0
+
+[node name="Level100" type="Node2D"]
+
+[node name="BaseLevel" parent="." instance=ExtResource("1_nlf3d")]
+collection_target = 8
+
+[node name="ObjectBlockBase" parent="BaseLevel/Planets" index="0" instance=ExtResource("2_nn5b2")]
+position = Vector2(242, 221)
+mass = 30.0
+
+[node name="Sprite2D" parent="BaseLevel/Planets/ObjectBlockBase" index="0"]
+scale = Vector2(3, 3)
+texture = SubResource("AtlasTexture_hhn40")
+
+[node name="CollisionShape2D" parent="BaseLevel/Planets/ObjectBlockBase" index="1"]
+shape = SubResource("CircleShape2D_t51je")
+
+[node name="ObjectBlockBase2" parent="BaseLevel/Planets" index="1" instance=ExtResource("2_nn5b2")]
+position = Vector2(242, 147)
+mass = 20.0
+
+[node name="Sprite2D" parent="BaseLevel/Planets/ObjectBlockBase2" index="0"]
+scale = Vector2(3, 3)
+texture = SubResource("AtlasTexture_ul5ow")
+
+[node name="CollisionShape2D" parent="BaseLevel/Planets/ObjectBlockBase2" index="1"]
+shape = SubResource("CircleShape2D_rx5vx")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="BaseLevel/Planets/ObjectBlockBase2"]
+rotation = 1.2485
+shape = SubResource("CapsuleShape2D_h1uwv")
+
+[node name="ObjectBlockBase3" parent="BaseLevel/Planets" index="2" instance=ExtResource("2_nn5b2")]
+position = Vector2(238, 92)
+rotation = -0.208004
+mass = 10.0
+
+[node name="Sprite2D" parent="BaseLevel/Planets/ObjectBlockBase3" index="0"]
+scale = Vector2(2, 2)
+texture = SubResource("AtlasTexture_itkms")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="BaseLevel/Planets/ObjectBlockBase3"]
+polygon = PackedVector2Array(28, 1, 15, -25, -16, -25, -29, 0, -15, 25, 15, 25)
+
+[node name="ObjectBlockBase4" parent="BaseLevel/Planets" index="3" instance=ExtResource("2_nn5b2")]
+position = Vector2(228, 47)
+rotation = -0.138031
+mass = 5.0
+
+[node name="Sprite2D" parent="BaseLevel/Planets/ObjectBlockBase4" index="0"]
+scale = Vector2(3, 3)
+texture = SubResource("AtlasTexture_7x6b4")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="BaseLevel/Planets/ObjectBlockBase4"]
+polygon = PackedVector2Array(20.9925, 16.041, 0.358093, -17.1135, -21.5712, 17.1955)
+
+[node name="ObjectBlockBase5" parent="BaseLevel/Planets" index="4" instance=ExtResource("2_nn5b2")]
+position = Vector2(167, 135)
+rotation = 0.632362
+mass = 2.0
+
+[node name="Sprite2D" parent="BaseLevel/Planets/ObjectBlockBase5" index="0"]
+texture = SubResource("AtlasTexture_1hnra")
+
+[node name="CollisionShape2D" parent="BaseLevel/Planets/ObjectBlockBase5" index="1"]
+shape = SubResource("RectangleShape2D_yixln")
+
+[node name="ObjectBlockBase6" parent="BaseLevel/Planets" index="5" instance=ExtResource("2_nn5b2")]
+position = Vector2(297, 114)
+rotation = 2.02867
+
+[node name="Sprite2D" parent="BaseLevel/Planets/ObjectBlockBase6" index="0"]
+texture = SubResource("AtlasTexture_k1c4v")
+
+[node name="CollisionShape2D" parent="BaseLevel/Planets/ObjectBlockBase6" index="1"]
+shape = SubResource("RectangleShape2D_i8yg5")
+
+[node name="ObjectBlockBase7" parent="BaseLevel/Planets" index="6" instance=ExtResource("2_nn5b2")]
+position = Vector2(420, 35)
+
+[node name="Sprite2D" parent="BaseLevel/Planets/ObjectBlockBase7" index="0"]
+scale = Vector2(2, 2)
+texture = SubResource("AtlasTexture_lt0ls")
+
+[node name="CollisionShape2D" parent="BaseLevel/Planets/ObjectBlockBase7" index="1"]
+position = Vector2(0, -1)
+shape = SubResource("CircleShape2D_36y0r")
+
+[node name="ObjectBlockBase8" parent="BaseLevel/Planets" index="7" instance=ExtResource("2_nn5b2")]
+position = Vector2(107, 225)
+rotation = -1.62062
+
+[node name="Sprite2D" parent="BaseLevel/Planets/ObjectBlockBase8" index="0"]
+scale = Vector2(2, 2)
+texture = SubResource("AtlasTexture_lt0ls")
+
+[node name="CollisionShape2D" parent="BaseLevel/Planets/ObjectBlockBase8" index="1"]
+position = Vector2(0, -1)
+shape = SubResource("CircleShape2D_36y0r")
+
+[node name="ObjectBlockBase9" parent="BaseLevel/Planets" index="8" instance=ExtResource("2_nn5b2")]
+position = Vector2(107, 38)
+rotation = -0.151618
+
+[node name="Sprite2D" parent="BaseLevel/Planets/ObjectBlockBase9" index="0"]
+scale = Vector2(2, 2)
+texture = SubResource("AtlasTexture_lt0ls")
+
+[node name="CollisionShape2D" parent="BaseLevel/Planets/ObjectBlockBase9" index="1"]
+position = Vector2(0, -1)
+shape = SubResource("CircleShape2D_36y0r")
+
+[node name="ObjectBlockBase10" parent="BaseLevel/Planets" index="9" instance=ExtResource("2_nn5b2")]
+position = Vector2(337, 151)
+rotation = 1.21484
+
+[node name="Sprite2D" parent="BaseLevel/Planets/ObjectBlockBase10" index="0"]
+scale = Vector2(2, 2)
+texture = SubResource("AtlasTexture_lt0ls")
+
+[node name="CollisionShape2D" parent="BaseLevel/Planets/ObjectBlockBase10" index="1"]
+position = Vector2(0, -1)
+shape = SubResource("CircleShape2D_36y0r")
+
+[node name="ObjectBlockBase11" parent="BaseLevel/Planets" index="10" instance=ExtResource("2_nn5b2")]
+position = Vector2(439, 236)
+rotation = 2.69016
+
+[node name="Sprite2D" parent="BaseLevel/Planets/ObjectBlockBase11" index="0"]
+scale = Vector2(2, 2)
+texture = SubResource("AtlasTexture_lt0ls")
+
+[node name="CollisionShape2D" parent="BaseLevel/Planets/ObjectBlockBase11" index="1"]
+position = Vector2(0, -1)
+shape = SubResource("CircleShape2D_36y0r")
+
+[node name="ObjectBlockBase12" parent="BaseLevel/Planets" index="11" instance=ExtResource("2_nn5b2")]
+position = Vector2(332, 9)
+rotation = 1.3138
+
+[node name="Sprite2D" parent="BaseLevel/Planets/ObjectBlockBase12" index="0"]
+texture = SubResource("AtlasTexture_nn5b2")
+
+[node name="CollisionShape2D" parent="BaseLevel/Planets/ObjectBlockBase12" index="1"]
+position = Vector2(-1, 0)
+shape = SubResource("CircleShape2D_lt0ls")
+
+[node name="ObjectBlockBase13" parent="BaseLevel/Planets" index="12" instance=ExtResource("2_nn5b2")]
+position = Vector2(24, 127)
+rotation = 3.0044
+
+[node name="Sprite2D" parent="BaseLevel/Planets/ObjectBlockBase13" index="0"]
+texture = SubResource("AtlasTexture_nn5b2")
+
+[node name="CollisionShape2D" parent="BaseLevel/Planets/ObjectBlockBase13" index="1"]
+position = Vector2(-1, 0)
+shape = SubResource("CircleShape2D_lt0ls")
+
+[node name="ObjectBlockBase14" parent="BaseLevel/Planets" index="13" instance=ExtResource("2_nn5b2")]
+position = Vector2(394, 195)
+rotation = 4.524
+
+[node name="Sprite2D" parent="BaseLevel/Planets/ObjectBlockBase14" index="0"]
+texture = SubResource("AtlasTexture_nn5b2")
+
+[node name="CollisionShape2D" parent="BaseLevel/Planets/ObjectBlockBase14" index="1"]
+position = Vector2(-1, 0)
+shape = SubResource("CircleShape2D_lt0ls")
+
+[node name="ObjectBlockBase15" parent="BaseLevel/Planets" index="14" instance=ExtResource("2_nn5b2")]
+position = Vector2(384, 71)
+rotation = 6.33398
+
+[node name="Sprite2D" parent="BaseLevel/Planets/ObjectBlockBase15" index="0"]
+texture = SubResource("AtlasTexture_nn5b2")
+
+[node name="CollisionShape2D" parent="BaseLevel/Planets/ObjectBlockBase15" index="1"]
+position = Vector2(-1, 0)
+shape = SubResource("CircleShape2D_lt0ls")
+
+[node name="ObjectBlockBase16" parent="BaseLevel/Planets" index="15" instance=ExtResource("2_nn5b2")]
+position = Vector2(18, 257)
+rotation = 10.1457
+
+[node name="Sprite2D" parent="BaseLevel/Planets/ObjectBlockBase16" index="0"]
+texture = SubResource("AtlasTexture_nn5b2")
+
+[node name="CollisionShape2D" parent="BaseLevel/Planets/ObjectBlockBase16" index="1"]
+position = Vector2(-1, 0)
+shape = SubResource("CircleShape2D_lt0ls")
+
+[node name="A1" parent="BaseLevel/Starships" index="0" instance=ExtResource("4_36y0r")]
+position = Vector2(47, 219)
+rotation = 0.734154
+
+[node name="A2" parent="BaseLevel/Starships" index="1" instance=ExtResource("4_36y0r")]
+position = Vector2(312, 86)
+rotation = 0.428243
+
+[node name="B1" parent="BaseLevel/Starships" index="2" instance=ExtResource("4_36y0r")]
+position = Vector2(187, 100)
+rotation = -0.703632
+mass = 3.0
+score_id = 1
+
+[node name="Sprite2D" parent="BaseLevel/Starships/B1" index="1"]
+animation = &"default_1"
+autoplay = "default_1"
+
+[node name="B2" parent="BaseLevel/Starships" index="3" instance=ExtResource("4_36y0r")]
+position = Vector2(279, 23)
+rotation = -2.3015
+mass = 3.0
+score_id = 1
+
+[node name="Sprite2D" parent="BaseLevel/Starships/B2" index="1"]
+animation = &"default_1"
+autoplay = "default_1"
+
+[node name="C1" parent="BaseLevel/Starships" index="4" instance=ExtResource("4_36y0r")]
+position = Vector2(166, 208)
+rotation = -0.87575
+mass = 5.0
+score_id = 2
+
+[node name="Sprite2D" parent="BaseLevel/Starships/C1" index="1"]
+animation = &"default_4"
+autoplay = "default_4"
+
+[node name="C2" parent="BaseLevel/Starships" index="5" instance=ExtResource("4_36y0r")]
+position = Vector2(442, 134)
+rotation = -1.59779
+mass = 5.0
+score_id = 2
+
+[node name="Sprite2D" parent="BaseLevel/Starships/C2" index="1"]
+animation = &"default_4"
+autoplay = "default_4"
+
+[node name="D1" parent="BaseLevel/Starships" index="6" instance=ExtResource("4_36y0r")]
+position = Vector2(54, 73)
+rotation = 0.810044
+mass = 7.0
+score_id = 3
+
+[node name="Sprite2D" parent="BaseLevel/Starships/D1" index="1"]
+animation = &"default_3"
+autoplay = "default_3"
+
+[node name="D2" parent="BaseLevel/Starships" index="7" instance=ExtResource("4_36y0r")]
+position = Vector2(328, 221)
+rotation = -0.610743
+mass = 7.0
+score_id = 3
+
+[node name="Sprite2D" parent="BaseLevel/Starships/D2" index="1"]
+animation = &"default_3"
+autoplay = "default_3"
+
+[editable path="BaseLevel"]
+[editable path="BaseLevel/Planets/ObjectBlockBase"]
+[editable path="BaseLevel/Planets/ObjectBlockBase2"]
+[editable path="BaseLevel/Planets/ObjectBlockBase3"]
+[editable path="BaseLevel/Planets/ObjectBlockBase4"]
+[editable path="BaseLevel/Planets/ObjectBlockBase5"]
+[editable path="BaseLevel/Planets/ObjectBlockBase6"]
+[editable path="BaseLevel/Planets/ObjectBlockBase7"]
+[editable path="BaseLevel/Planets/ObjectBlockBase8"]
+[editable path="BaseLevel/Planets/ObjectBlockBase9"]
+[editable path="BaseLevel/Planets/ObjectBlockBase10"]
+[editable path="BaseLevel/Planets/ObjectBlockBase11"]
+[editable path="BaseLevel/Planets/ObjectBlockBase12"]
+[editable path="BaseLevel/Planets/ObjectBlockBase13"]
+[editable path="BaseLevel/Planets/ObjectBlockBase14"]
+[editable path="BaseLevel/Planets/ObjectBlockBase15"]
+[editable path="BaseLevel/Planets/ObjectBlockBase16"]
+[editable path="BaseLevel/Starships/B1"]
+[editable path="BaseLevel/Starships/B2"]
+[editable path="BaseLevel/Starships/C1"]
+[editable path="BaseLevel/Starships/C2"]
+[editable path="BaseLevel/Starships/D1"]
+[editable path="BaseLevel/Starships/D2"]
