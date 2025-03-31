@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://3hhlxdtum8yl"]
+
+[ext_resource type="Script" uid="uid://q3li7ok5ni33" path="res://scripts/ship_navigation.gd" id="1_xbtkp"]
+
+[node name="ShipNavigation" type="Node2D"]
+script = ExtResource("1_xbtkp")

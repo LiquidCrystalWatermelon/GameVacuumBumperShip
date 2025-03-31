@@ -1,3 +1,4 @@
+class_name BaseLevel
 extends Node2D
 
 signal on_game_failed
@@ -86,18 +87,24 @@ func regist_ship_collect():
 func on_ship_crashed():
     # 游戏失败
     await exit_anim()
-    on_game_failed.emit()
     queue_free()
+    on_game_failed.emit()
 
 func on_ship_collect():
     collection_current += 1;
     update_ui_info()
     if collection_current >= collection_target:
         # 进入下一关
-        on_game_success.emit()
         await exit_anim()
-        AudioManager.play_sound(AudioManager.SoundType.LEVEL_CLEAR, get_viewport_rect().size / 2)
+        on_game_success.emit()
         queue_free()
+        AudioManager.play_sound(AudioManager.SoundType.LEVEL_CLEAR, get_viewport_rect().size / 2)
+        
+func disable_all_collision():
+    for rb in $Starships.get_children() + $Planets.get_children():
+        rb.collision_mask = 0
+        rb.collision_layer = 0
+        rb.set_contact_monitor(false)
 
 ## 更新 ui
 func update_ui_info():

@@ -1,0 +1,16 @@
+[remap]
+
+importer="aseprite_wizard.plugin.static-texture"
+type="PortableCompressedTexture2D"
+uid="uid://sv1snom55rva"
+path="res://.godot/imported/keyboard.aseprite-9056650a5995bb2064d095e744f865c0.res"
+
+[deps]
+
+source_file="res://assets/aseprite/keyboard.aseprite"
+dest_files=["res://.godot/imported/keyboard.aseprite-9056650a5995bb2064d095e744f865c0.res"]
+
+[params]
+
+layer/exclude_layers_pattern=""
+layer/only_visible_layers=false
