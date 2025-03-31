@@ -92,7 +92,7 @@ func _create_player(type: SoundType) -> AudioStreamPlayer2D:
     var player = AudioStreamPlayer2D.new()
     player.stream = CONFIG[type].stream
     player.volume_db = CONFIG[type].volume
-    player.bus = "SFX"
+    #player.bus = "SFX"
     return player
 
 func _setup_player(player: AudioStreamPlayer2D, type: SoundType, position: Vector2):
