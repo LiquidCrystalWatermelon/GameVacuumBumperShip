@@ -1,0 +1,51 @@
+[gd_scene load_steps=7 format=3 uid="uid://bof2wyk71b14x"]
+
+[ext_resource type="PackedScene" uid="uid://dy27c3hhp0ycp" path="res://scenes/base_level.tscn" id="1_9fjq1"]
+[ext_resource type="PackedScene" uid="uid://chy1ypaqyiwg" path="res://scenes/objects/object_block_base.tscn" id="2_8gkq2"]
+[ext_resource type="Texture2D" uid="uid://bgcmqgwxx8ar6" path="res://assets/aseprite/planet.aseprite" id="3_5hmr3"]
+[ext_resource type="PackedScene" uid="uid://kedjuxxpnr8l" path="res://scenes/players/player_starship_1.tscn" id="4_6ins4"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v4ksr"]
+atlas = ExtResource("3_5hmr3")
+region = Rect2(1, 65, 30, 30)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qrh1u"]
+radius = 109.073
+
+[node name="Level070" type="Node2D"]
+
+[node name="BaseLevel" parent="." instance=ExtResource("1_9fjq1")]
+collection_target = 5
+
+[node name="CentralPlanet" parent="BaseLevel/Planets" index="0" instance=ExtResource("2_8gkq2")]
+position = Vector2(240, 135)
+mass = 10.0
+
+[node name="Sprite2D" parent="BaseLevel/Planets/CentralPlanet" index="0"]
+scale = Vector2(7, 7)
+texture = SubResource("AtlasTexture_v4ksr")
+
+[node name="CollisionShape2D" parent="BaseLevel/Planets/CentralPlanet" index="1"]
+shape = SubResource("CircleShape2D_qrh1u")
+
+[node name="AnimatedShip1" parent="BaseLevel/Starships" index="0" instance=ExtResource("4_6ins4")]
+position = Vector2(120, 50)
+score_id = 2
+
+[node name="Sprite2D" parent="BaseLevel/Starships/AnimatedShip1" index="1"]
+animation = &"default_1"
+autoplay = "default_1"
+
+[node name="AnimatedShip2" parent="BaseLevel/Starships" index="1" instance=ExtResource("4_6ins4")]
+position = Vector2(360, 220)
+rotation = 3.14159
+score_id = 2
+
+[node name="Sprite2D" parent="BaseLevel/Starships/AnimatedShip2" index="1"]
+animation = &"default_1"
+autoplay = "default_1"
+
+[editable path="BaseLevel"]
+[editable path="BaseLevel/Planets/CentralPlanet"]
+[editable path="BaseLevel/Starships/AnimatedShip1"]
+[editable path="BaseLevel/Starships/AnimatedShip2"]

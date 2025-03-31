@@ -6,7 +6,7 @@ extends Node2D
 
 @export var start_node: Node2D    # 起始节点（拖拽到编辑器）
 @export var end_node: Node2D      # 目标节点（拖拽到编辑器）
-@export var line_color := Color.WHITE  # 线条颜色
+@export var line_color := Color(1,1,1,0)  # 线条颜色
 @export var line_width := 2.0          # 线条宽度
 @export var arrow_size := 10.0         # 箭头大小
 @export var dash_length := 8.0         # 虚线实线部分长度
@@ -17,6 +17,7 @@ var _dash_offset := 0.0  # 用于创建流动效果
 
 func _process(delta):
     _dash_offset += delta * 60  # 流动速度
+    line_color.a = clampf(_dash_offset / 30.0 - 1, 0, 1)
     queue_redraw()
 
 func _draw():
