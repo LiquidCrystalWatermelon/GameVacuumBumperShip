@@ -8,6 +8,9 @@ extends Node2D
     preload("res://scenes/levels/level_040.tscn"),
     preload("res://scenes/levels/level_050.tscn"),
     preload("res://scenes/levels/level_060.tscn"),
+    preload("res://scenes/levels/level_070.tscn"),
+    preload("res://scenes/levels/level_080.tscn"),
+    preload("res://scenes/levels/level_090.tscn"),
 ]
 
 var current_level_index = 0
