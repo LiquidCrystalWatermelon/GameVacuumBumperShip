@@ -95,7 +95,7 @@ func _on_body_entered(body: Node) -> void:
     elif is_in_collision_layer(body, 3):
         print("碰撞墙体！")
         if enable_wall_crash:
-            #disable_rigid()
+            disable_rigid()
             AudioManager.play_sound(AudioManager.SoundType.EXPLOSION, global_position)
             emit_signal("on_crashed")
             sprite.play("die")

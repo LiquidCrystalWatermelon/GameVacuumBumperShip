@@ -4,7 +4,9 @@ extends Node2D
 @onready var levels := [
     preload("res://scenes/levels/level_010.tscn"),
     preload("res://scenes/levels/level_020.tscn"),
-    preload("res://scenes/test/test_level_1.tscn"),
+    preload("res://scenes/levels/level_030.tscn"),
+    preload("res://scenes/levels/level_040.tscn"),
+    preload("res://scenes/levels/level_050.tscn"),
 ]
 
 var current_level_index = 0

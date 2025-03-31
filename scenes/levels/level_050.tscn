@@ -1,0 +1,72 @@
+[gd_scene load_steps=8 format=3 uid="uid://df628jyt4hhx3"]
+
+[ext_resource type="PackedScene" uid="uid://dy27c3hhp0ycp" path="res://scenes/base_level.tscn" id="1_chi81"]
+[ext_resource type="PackedScene" uid="uid://chy1ypaqyiwg" path="res://scenes/objects/object_block_base.tscn" id="2_oedau"]
+[ext_resource type="Texture2D" uid="uid://bgcmqgwxx8ar6" path="res://assets/aseprite/planet.aseprite" id="3_mi2gc"]
+[ext_resource type="PackedScene" uid="uid://kedjuxxpnr8l" path="res://scenes/players/player_starship_1.tscn" id="4_y5p3v"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ahtlo"]
+atlas = ExtResource("3_mi2gc")
+region = Rect2(0, 2, 15, 13)
+
+[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_ahtlo"]
+points = PackedVector2Array(0, -27, -30, 23, 30, 23)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_omkcf"]
+radius = 70.7107
+
+[node name="Node" type="Node2D"]
+
+[node name="BaseLevel" parent="." instance=ExtResource("1_chi81")]
+level_id = 1
+collection_target = 4
+
+[node name="ObjectBlockBase2" parent="BaseLevel/Planets" index="0" instance=ExtResource("2_oedau")]
+position = Vector2(221, 117)
+
+[node name="Sprite2D" parent="BaseLevel/Planets/ObjectBlockBase2" index="0"]
+scale = Vector2(4, 4)
+texture = SubResource("AtlasTexture_ahtlo")
+
+[node name="CollisionShape2D" parent="BaseLevel/Planets/ObjectBlockBase2" index="1"]
+shape = SubResource("ConvexPolygonShape2D_ahtlo")
+
+[node name="ObjectBlockBase" parent="BaseLevel/Planets" index="1" instance=ExtResource("2_oedau")]
+position = Vector2(352, 175)
+
+[node name="Sprite2D" parent="BaseLevel/Planets/ObjectBlockBase" index="0"]
+scale = Vector2(5, 5)
+
+[node name="CollisionShape2D" parent="BaseLevel/Planets/ObjectBlockBase" index="1"]
+shape = SubResource("CircleShape2D_omkcf")
+
+[node name="Ship A 1" parent="BaseLevel/Starships" index="0" instance=ExtResource("4_y5p3v")]
+position = Vector2(139, 238)
+
+[node name="Ship  A 2" parent="BaseLevel/Starships" index="1" instance=ExtResource("4_y5p3v")]
+position = Vector2(319, 19)
+rotation = 3.14159
+
+[node name="Ship B 1" parent="BaseLevel/Starships" index="2" instance=ExtResource("4_y5p3v")]
+position = Vector2(50, 163)
+rotation = 1.5708
+score_id = 1
+
+[node name="Sprite2D" parent="BaseLevel/Starships/Ship B 1" index="1"]
+animation = &"default_1"
+autoplay = "default_1"
+
+[node name="Ship B 2" parent="BaseLevel/Starships" index="3" instance=ExtResource("4_y5p3v")]
+position = Vector2(433, 55)
+rotation = 4.71239
+score_id = 1
+
+[node name="Sprite2D" parent="BaseLevel/Starships/Ship B 2" index="1"]
+animation = &"default_1"
+autoplay = "default_1"
+
+[editable path="BaseLevel"]
+[editable path="BaseLevel/Planets/ObjectBlockBase2"]
+[editable path="BaseLevel/Planets/ObjectBlockBase"]
+[editable path="BaseLevel/Starships/Ship B 1"]
+[editable path="BaseLevel/Starships/Ship B 2"]
