@@ -95,7 +95,7 @@ func _on_body_entered(body: Node) -> void:
     elif is_in_collision_layer(body, 3):
         print("碰撞墙体！")
         if enable_wall_crash:
-            disable_rigid()
+            #disable_rigid()
             AudioManager.play_sound(AudioManager.SoundType.EXPLOSION, global_position)
             emit_signal("on_crashed")
             sprite.play("die")
@@ -109,7 +109,7 @@ func disable_rigid():
     linear_velocity = Vector2(0,0)
     collision_mask = 0
     collision_layer = 0
-    set_contact_monitor(false)
+    #set_contact_monitor(false)
     
 
 # 判断节点是否在指定碰撞层（层号从1开始）

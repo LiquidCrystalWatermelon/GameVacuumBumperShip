@@ -3,6 +3,7 @@ extends Node2D
 
 @onready var levels := [
     preload("res://scenes/levels/level_010.tscn"),
+    preload("res://scenes/levels/level_020.tscn"),
     preload("res://scenes/test/test_level_1.tscn"),
 ]
 

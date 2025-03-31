@@ -82,7 +82,7 @@ func play_sound(type: SoundType, position: Vector2 = Vector2.ZERO):
     var players := pool.filter(func(p): return not p.playing)
     var player = null;
     if pool.size() > 0:
-        player = players.front()
+        player = pool.front()
     
     if player:
         _setup_player(player, type, position)
