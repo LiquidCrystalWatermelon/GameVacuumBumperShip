@@ -17,6 +17,8 @@ var collection_current := 0
 ## 当前用时（秒）
 var current_time_s := 0
 
+var is_game_active := true
+
 func _ready():
     $Timer.start(1)
     update_ui_info()
@@ -87,16 +89,19 @@ func regist_ship_collect():
         ship.on_collected.connect(on_ship_collect)
 
 func on_ship_crashed():
-    # 游戏失败
-    await exit_anim()
-    queue_free()
-    on_game_failed.emit()
+    if is_game_active:
+        is_game_active = false
+        # 游戏失败
+        await exit_anim()
+        queue_free()
+        on_game_failed.emit()
 
 func on_ship_collect():
     collection_current += 1;
     update_ui_info()
-    if collection_current >= collection_target:
+    if collection_current >= collection_target and is_game_active:
         # 进入下一关
+        is_game_active = false
         await exit_anim()
         on_game_success.emit()
         queue_free()

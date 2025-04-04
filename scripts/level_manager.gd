@@ -21,6 +21,12 @@ func _ready() -> void:
     await load_welcome()
     load_level(current_level_index, levels)
     
+    #test()
+    
+func test():
+    current_level_index = 9
+    load_level(current_level_index, levels)
+    
 func load_welcome():
     var welcome_res = preload("res://scenes/welcome.tscn")
     var welcome = welcome_res.instantiate()
